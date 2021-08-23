@@ -1,41 +1,42 @@
 package qa.automation.group;
 
+
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.apache.commons.codec.binary.Base64;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
 
 public class PostBooks {
 
-    @Test
-    public void autenticarUser(){
-        RestAssured.baseURI = "http://localhost:8080";
+    @BeforeTest
+    public void postAuth() {
 
-        RequestSpecification request = RestAssured.given();
-
-        String credentials = "admin1:test";
-
-       byte[] encodedCredentials = Base64.encodeBase64(credentials.getBytes());
-
-       String encodedCredentialsString = new String(encodedCredentials);
-
-       request.header("Authorization","Basic "+encodedCredentialsString);
-
-       String payload = "{  \"author\": \"Monteiro Lobato\",  " +
-               "\"bookCategory\": \"Infantil\",  " +
-               "\"id\": 0,  " +
-               "\"title\": \"Menino Maluquinho\"}";
-
-
-
-       request.header("Content-Type","application/json");
-
-       Response response = request.body(payload).post("/books");
-
-        System.out.println("Response Status Code is "+response.getStatusCode());
-
-        response.prettyPrint();
+        int code = RestAssured.given()
+                .auth().preemptive()
+                .basic("admin1", "test")
+                .when()
+                .post("http://localhost:8080/books")
+                .getStatusCode();
+        System.out.println("Response Code from server is" + code);
 
     }
+
+
+     @Test
+     public void insertBooks(){
+
+        given()
+              .contentType("application/json")
+              .body("{  \"author\": \"Graciliano Ramos\",  " +
+                      "\"bookCategory\": \"Romance\",  " +
+                      "\"id\": 0,  " +
+                      "\"title\": \"Grande Sertão Veredas\"}")
+        .when()
+              .post("http://localhost:8080/books")
+        .then()
+              .statusCode(201)
+              .log().all();
+    }
+
 }
