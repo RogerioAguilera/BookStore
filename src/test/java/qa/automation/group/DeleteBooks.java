@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class DeleteBooks {
 
-    @BeforeTest
+    @Test
     public void deleteAuth(){
         int code = given()
                 .auth().preemptive()

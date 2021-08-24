@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class PostBooks {
 
-    @BeforeTest
+    @Test
     public void postAuth() {
 
         int code = RestAssured.given()

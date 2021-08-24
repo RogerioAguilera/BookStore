@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class PutBooks {
 
-    @BeforeTest
+    @Test
     public void putAuth() {
 
         int code = given()

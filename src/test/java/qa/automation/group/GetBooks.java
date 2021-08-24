@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class GetBooks {
 
-    @BeforeTest
+    @Test
     public void getAuth(){
 
         int code= RestAssured.given()
@@ -14,7 +14,7 @@ public class GetBooks {
         .basic("admin1","test")
         .when()
         .get("http://localhost:8080/books")
-        .getStatusCode(200);
+        .getStatusCode();
 
         System.out.println("Response Code from server is"+code);
 
