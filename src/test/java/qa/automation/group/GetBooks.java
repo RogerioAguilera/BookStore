@@ -1,22 +1,27 @@
 package qa.automation.group;
 
 import io.restassured.RestAssured;
-import org.testng.annotations.BeforeTest;
+import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
 
 public class GetBooks {
 
     @Test
-    public void getAuth(){
+    public void searchBooks(){
 
-        int code= RestAssured.given()
-        .auth().preemptive()
-        .basic("admin1","test")
-        .when()
-        .get("http://localhost:8080/books")
-        .getStatusCode();
-
-        System.out.println("Response Code from server is"+code);
+        ValidatableResponse code =
+                given()
+                        .contentType("application/json")
+                        .auth()
+                        .preemptive()
+                        .basic("admin1", "test")
+                        .when()
+                        .get("http://localhost:8080/books")
+                        .then()
+                        .statusCode(200)
+                        .log().all();
 
     }
 

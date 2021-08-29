@@ -1,8 +1,7 @@
 package qa.automation.group;
 
 
-import io.restassured.RestAssured;
-import org.testng.annotations.BeforeTest;
+import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -10,33 +9,24 @@ import static io.restassured.RestAssured.given;
 public class PostBooks {
 
     @Test
-    public void postAuth() {
+    public void InsertBooks() {
 
-        int code = RestAssured.given()
-                .auth().preemptive()
-                .basic("admin1", "test")
+        ValidatableResponse code =
+                given()
+                        .contentType("application/json")
+                .body("{  \"author\": \"H. Rider Haggard\",  " +
+                        "\"bookCategory\": \"Ficção\",  " +
+                        "\"title\": \"As minas do Rei Salomão\"}")
+                .auth()
+                        .preemptive()
+                        .basic("admin1", "test")
                 .when()
-                .post("http://localhost:8080/books")
-                .getStatusCode();
-        System.out.println("Response Code from server is" + code);
+                        .post("http://localhost:8080/books")
+                .then()
+                        .statusCode(201)
+                .log().all();
 
-    }
 
-
-     @Test
-     public void insertBooks(){
-
-        given()
-              .contentType("application/json")
-              .body("{  \"author\": \"Graciliano Ramos\",  " +
-                      "\"bookCategory\": \"Romance\",  " +
-                      "\"id\": 0,  " +
-                      "\"title\": \"Grande Sertão Veredas\"}")
-        .when()
-              .post("http://localhost:8080/books")
-        .then()
-              .statusCode(201)
-              .log().all();
     }
 
 }
