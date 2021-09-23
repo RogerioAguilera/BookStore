@@ -1,8 +1,2 @@
-qa/automation/group/PostBooks.java
- qa.automation.group.PostBooks
-qa/automation/group/PutBooks.java
- qa.automation.group.PutBooks
-qa/automation/group/GetBooks.java
- qa.automation.group.GetBooks
-qa/automation/group/DeleteBooks.java
- qa.automation.group.DeleteBooks
+qa/automation/group/TestsBooks.java
+ qa.automation.group.TestsBooks
