@@ -1,4 +1,4 @@
-package qa.automation.group;
+package qa.automation.group.requests;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.*;
+import static qa.automation.group.utils.FileUtils.readJson;
 
 public class TestBooksFailed {
     @BeforeTest
@@ -17,7 +18,7 @@ public class TestBooksFailed {
     }
 
     @Test
-    void searchBooks() {
+    void searchBooks_shouldReturnUnauthorized_whenPasswordIncorrect() {
 
         given()
             .contentType("application/json")
@@ -32,9 +33,6 @@ public class TestBooksFailed {
 
     }
 
-    private String readJson(String pathJson) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(pathJson)));
-    }
 
     @Test
     void alterBooks() throws IOException {
