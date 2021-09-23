@@ -1,5 +1,5 @@
-HTTP/1.1 201 
-JSet-Cookie: JSESSIONID=65FC3B3AB0B773F9AB41EB43BB753FC5; Path=/; HttpOnly
+HTTP/1.1 401 
+&WWW-Authenticate: Basic realm="Realm"
  X-Content-Type-Options: nosniff
  X-XSS-Protection: 1; mode=block
 >Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -8,76 +8,13 @@
 X-Frame-Options: DENY
 Content-Type: application/json
 Transfer-Encoding: chunked
-$Date: Thu, 23 Sep 2021 10:52:57 GMT
+$Date: Thu, 23 Sep 2021 11:53:21 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 
 {
-    "id": 26,
-    "title": "Dom Casmurro",
-"    "author": "Machado de Assis",
-    "bookCategory": "Romance"
+2    "timestamp": "2021-09-23T11:53:21.705+00:00",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/books"
 }
-HTTP/1.1 204 
-JSet-Cookie: JSESSIONID=999C64D8B17492B7E6AB94E5EC873855; Path=/; HttpOnly
- X-Content-Type-Options: nosniff
- X-XSS-Protection: 1; mode=block
->Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-$Date: Thu, 23 Sep 2021 10:52:57 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-HTTP/1.1 200 
-JSet-Cookie: JSESSIONID=1C964153DD9402D620276BDFEE17B381; Path=/; HttpOnly
- X-Content-Type-Options: nosniff
- X-XSS-Protection: 1; mode=block
->Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Type: application/json
-Transfer-Encoding: chunked
-$Date: Thu, 23 Sep 2021 10:52:57 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-[
-    {
-        "id": 21,
-*        "title": "O chamado da floresta",
-!        "author": "Jack London",
-#        "bookCategory": "Aventura"
-    },
-    {
-        "id": 22,
-!        "title": "Dom Casmurro",
-&        "author": "Machado de Assis",
-"        "bookCategory": "Romance"
-    },
-    {
-        "id": 23,
-!        "title": "Dom Casmurro",
-&        "author": "Machado de Assis",
-"        "bookCategory": "Romance"
-    },
-    {
-        "id": 24,
-!        "title": "Dom Casmurro",
-&        "author": "Machado de Assis",
-"        "bookCategory": "Romance"
-    },
-    {
-        "id": 25,
-!        "title": "Dom Casmurro",
-&        "author": "Machado de Assis",
-"        "bookCategory": "Romance"
-    },
-    {
-        "id": 26,
-!        "title": "Dom Casmurro",
-&        "author": "Machado de Assis",
-"        "bookCategory": "Romance"
-    }
-]

@@ -1,2 +1,0 @@
-qa/automation/group/TestsBooks.java
- qa.automation.group.TestsBooks
