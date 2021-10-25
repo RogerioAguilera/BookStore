@@ -1,11 +1,9 @@
-package qa.automation.group.requests;
+package qa.automation.group.requests.failed;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.*;
 import static qa.automation.group.utils.FileUtils.readJson;

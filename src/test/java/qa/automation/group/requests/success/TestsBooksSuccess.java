@@ -1,4 +1,4 @@
-package qa.automation.group.requests;
+package qa.automation.group.requests.success;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ public class TestsBooksSuccess {
     private static final String pass = System.getenv("PASS");
 
     @BeforeTest
-    void setup(){
+    void setup() {
         baseURI = "http://localhost";
         port = 8080;
     }
@@ -29,6 +29,20 @@ public class TestsBooksSuccess {
             .basic(user, pass)
             .when()
             .get("/books")
+            .then()
+            .statusCode(200)
+            .log().all();
+    }
+
+    @Test
+    void searchBooksId() {
+        given()
+            .contentType("application/json")
+            .auth()
+            .preemptive()
+            .basic(user, pass)
+            .when()
+            .get("/books/54")
             .then()
             .statusCode(200)
             .log().all();
@@ -64,7 +78,7 @@ public class TestsBooksSuccess {
             .when()
             .post("/books")
             .then()
-            .statusCode(200)
+            .statusCode(400)
             .log().all();
     }
 
@@ -76,11 +90,23 @@ public class TestsBooksSuccess {
             .preemptive()
             .basic(user, pass)
             .when()
-            .delete("/books/19")
+            .delete("/books/53")
+            .then()
+            .statusCode(400)
+            .log().all();
+    }
+
+    @Test
+    void deleteBooksId() {
+        given()
+            .contentType("application/json")
+            .auth()
+            .preemptive()
+            .basic(user, pass)
+            .when()
+            .delete("/books/28")
             .then()
             .statusCode(204)
             .log().all();
     }
 }
-
-
